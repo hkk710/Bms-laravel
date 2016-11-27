@@ -1,20 +1,18 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		@section('title', 'Register Member')
+		@section('title', "Delete - $mb->name")
 		@include('partials._head')
 	</head>
-	<body style="background-color:#000" >
+	<body style="background: #000;">
 		@include('partials._sidenav')
-		<div class="container w3-margin-top w3-padding-top">
+		<div class="container w3-padding-top w3-margin-top">
 			<div class="col-md-12">
-				<div class="panel panel-default ">
-					<div class="panel-heading w3-indigo">
-						Registeration form
-					</div>
+				<div class="panel panel-default">
 					<div class="panel-body">
-						{!! Form::open(['route' => 'membership.store', 'files' => true]) !!}
-
+						<h2 class="w3-text-red text-center">Are you sure you want to delete this member?</h2>
+						<hr>
+						{!! Form::model($mb) !!}
 							{{ Form::label('name', 'Name:') }}
 							{{ Form::text('name', null, ['class' => 'form-control w3-margin-bottom', 'placeholder' => 'name...']) }}
 
@@ -35,13 +33,25 @@
 
 							{{ Form::label('address', 'Address:') }}
 							{{ Form::textarea('address', null, ['class' => 'form-control w3-margin-bottom', 'placeholder' => 'address...', 'style' => 'max-width: 100%; min-width: 100%; min-height: 150px; max-height: 150px']) }}
-
-							{{ Form::label('profile_picture', 'Profile Picture') }}
-							{{ Form::file('profile_picture', ['class' => 'w3-margin-bottom']) }}
-
-							{{ Form::submit('Submit', ['class' => 'btn btn-success btn-block']) }}
-
+							<div class="col-sm-12 col-md-5 w3-padding-0">
+	    						{{ Form::label('profile_picture', 'Profile Picture') }}
+	    						<div class="thumbnail">
+	      							<img src="{{ asset($mb->profile_picture) }}" alt="">
+							    </div>
+							</div>
 						{!! Form::close() !!}
+						<div class="col-md-12">
+							<div class="container-fluid">
+								<div class="col-sm-6">
+									{!! Form::open(['route' => ['membership.destroy', $mb->id], 'method' => 'DELETE']) !!}
+										{{ Form::submit('Delete', ['class' => 'btn btn-danger btn-block w3-margin-bottom']) }}
+									{!! Form::close() !!}
+								</div>
+								<div class="col-sm-6">
+									<a href="{{ route('membership.show', $mb->id) }}" class="btn btn-default btn-block w3-margin-bottom">Cancel</a>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -56,6 +66,9 @@
 			    $("#mySidenav").hide('slow');
 			    $("#mySidenav1").hide();
 			}
+			$(function() {
+				$('input, textarea').attr('readonly', 'readonly')
+			})
 		</script>
 	</body>
 </html>

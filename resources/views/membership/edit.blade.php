@@ -35,7 +35,7 @@
 							{{ Form::label('profile_picture', 'Profile Picture') }}
 							{{ Form::file('profile_picture', ['class' => 'w3-margin-bottom']) }}
 
-							{{ Form::submit('Submit', ['class' => 'btn btn-success']) }}
+							{{ Form::submit('Submit', ['class' => 'btn btn-success btn-block']) }}
 						{!! Form::close() !!}
 					</div>
 				</div>

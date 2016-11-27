@@ -3,3 +3,8 @@
 <link rel="stylesheet" href="{{ asset('css/w3.css') }}">
 <link rel="stylesheet" href="{{ asset('css/fa.css') }}">
 <script src="{{ asset('js/app.js') }}"></script>
+<script>
+	$(function() {
+		$('img').attr('draggable', 'false');
+	});
+</script>

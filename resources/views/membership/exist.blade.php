@@ -33,7 +33,7 @@
 										<td>{{ $mb->religion }}</td>
 										<td>{{ $mb->caste }}</td>
 										<td>{{ substr(strip_tags($mb->address), 0, 30) }}{{ strlen(strip_tags($mb->address)) > 30 ? "....." : "" }}</td>
-										<td><a href="{{ route('membership.show', $mb->id) }}" class="btn btn-primary btn-sm">View</a> <a href="{{ route('membership.edit', $mb->id) }}" class="btn btn-warning btn-sm">Edit</a> <a href="" class="btn btn-danger btn-sm" 	>Delete</a></td>
+										<td><a href="{{ route('membership.show', $mb->id) }}" class="btn btn-primary btn-sm">View</a> <a href="{{ route('membership.edit', $mb->id) }}" class="btn btn-warning btn-sm">Edit</a> <a href="{{ route('membership.delete', $mb->id) }}" class="btn btn-danger btn-sm">Delete</a></td>
 									</tr>
 								@endforeach
 							</tbody>

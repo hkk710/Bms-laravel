@@ -17,5 +17,6 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::get('membership/{id}/delete', ['uses' => 'membershipController@delete', 'as' => 'membership.delete']);
 Route::resource('/membership', 'membershipController');
 Route::get('/exist/membership', 'membershipController@exist');

@@ -31,14 +31,23 @@
 
 							{{ Form::label('address', 'Address:') }}
 							{{ Form::textarea('address', null, ['class' => 'form-control w3-margin-bottom', 'placeholder' => 'address...', 'style' => 'max-width: 100%; min-width: 100%; min-height: 150px; max-height: 150px']) }}
-							 			 <div class="col-sm-15 col-md-5">
-    									<div class="thumbnail">
-    									{{ Form::label('profile_picture', 'Profile Picture') }}
-      									<img src="{{ asset($mb->profile_picture) }}" alt="">
-      								 	 	
-						    </div>
-						</div>
+							<div class="col-sm-12 col-md-5 w3-padding-0">
+	    						{{ Form::label('profile_picture', 'Profile Picture') }}
+	    						<div class="thumbnail">
+	      							<img src="{{ asset($mb->profile_picture) }}" alt="">
+							    </div>
+							</div>
 						{!! Form::close() !!}
+						<div class="container-fluid">
+							<div class="col-md-12">
+								<div class="col-sm-6">
+									<a href="{{ route('membership.edit', $mb->id) }}" class="btn btn-warning btn-block">Edit</a>
+								</div>
+								<div class="col-sm-6">
+									<a href="{{ route('membership.delete', $mb->id) }}" class="btn btn-danger btn-block">Delete</a>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -54,7 +63,7 @@
 			    $("#mySidenav1").hide();
 			}
 			$(function() {
-				$('input, textarea').attr('disabled', 'disabled')
+				$('input, textarea').attr('readonly', 'readonly')
 			})
 		</script>
 	</body>
