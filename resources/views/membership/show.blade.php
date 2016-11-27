@@ -34,7 +34,7 @@
 							 			 <div class="col-sm-15 col-md-5">
     									<div class="thumbnail">
     									{{ Form::label('profile_picture', 'Profile Picture') }}
-      									<img src="{{ $mb->profile_picture }}" alt="">
+      									<img src="{{ asset($mb->profile_picture) }}" alt="">
       								 	 	
 						    </div>
 						</div>

@@ -111,7 +111,7 @@ class membershipController extends Controller
                 'religion'        => 'required|max:255',
                 'caste'           => 'required|max:255',
                 'address'         => 'required|max:255',
-                'profile_picture' => 'sometimes|image'
+                'profile_picture' => 'sometimes|image',
             ]);
 
         $mb = Membership::find($id);
