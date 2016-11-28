@@ -128,12 +128,15 @@ class membershipController extends Controller
           Image::make($image)->resize(800, 600)->save($location);
           $mb->profile_picture = 'images/profile/' . $filename;
         }
-        else if ($request->gender == 'male') {
+         else if ($mb->profile_picture != null || $mb->profile_picture != "" || $mb->profile_picture != 'images/profile/1.png' || $mb->profile_picture != 'images/profile/2.png') {
+            if ($request->gender == 'male') {
             $mb->profile_picture = 'images/profile/1.png';
+            }
+            else if ($request->gender == 'female') {
+                 $mb->profile_picture = 'images/profile/2.png';
+            }
         }
-        else if ($request->gender == 'female') {
-             $mb->profile_picture = 'images/profile/2.png';
-        }
+        
         $mb->save();
 
         Session::flash('success', 'You have been registerd');
@@ -148,10 +151,18 @@ class membershipController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $mb = Membership::find($id);
+        $mb->delete();
+
+        Session::flash('success', 'This member was successfully deleted');
+        return redirect('/exist/membership');
     }
     public function exist() {
         $mbs = Membership::paginate(10);
         return view('membership.exist')->withMbs($mbs);
+    }
+    public function delete($id) {
+        $mb = Membership::find($id);
+        return view('membership.delete')->withMb($mb);
     }
 }
