@@ -10,7 +10,7 @@
 			<div class="col-md-12">
 				<div class="panel panel-default">
 					<div class="panel-body">
-						{!! Form::model($mb, ['route' => ['membership.update', $mb->id], 'method' => 'PUT']) !!}
+						{!! Form::model($mb, ['route' => ['membership.update', $mb->id], 'method' => 'PUT', 'files' => true]) !!}
 							{{ Form::label('name', 'Name:') }}
 							{{ Form::text('name', null, ['class' => 'form-control w3-margin-bottom', 'placeholder' => 'name...']) }}
 

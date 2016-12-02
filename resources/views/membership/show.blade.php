@@ -63,7 +63,8 @@
 			    $("#mySidenav1").hide();
 			}
 			$(function() {
-				$('input, textarea').attr('readonly', 'readonly')
+				$('input, textarea').attr('readonly', 'readonly');
+				$('input[type="radio"]').attr('disabled', 'disabled');
 			})
 		</script>
 	</body>

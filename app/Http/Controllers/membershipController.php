@@ -9,6 +9,9 @@ use Image;
 
 class membershipController extends Controller
 {
+    public function __construct() {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -121,6 +124,7 @@ class membershipController extends Controller
         $mb->religion = $request->religion;
         $mb->caste = $request->caste;
         $mb->address = $request->address;
+        
         if ($request->hasFile('profile_picture')) {
           $image = $request->file('profile_picture');
           $filename = time() . '.' . $image->getClientOriginalExtension();
@@ -128,12 +132,12 @@ class membershipController extends Controller
           Image::make($image)->resize(800, 600)->save($location);
           $mb->profile_picture = 'images/profile/' . $filename;
         }
-         else if ($mb->profile_picture != null || $mb->profile_picture != "" || $mb->profile_picture != 'images/profile/1.png' || $mb->profile_picture != 'images/profile/2.png') {
+        else if ($mb->profile_picture == 'images/profile/1.png' || $mb->profile_picture == 'images/profile/2.png') {
             if ($request->gender == 'male') {
-            $mb->profile_picture = 'images/profile/1.png';
+                $mb->profile_picture = 'images/profile/1.png';
             }
             else if ($request->gender == 'female') {
-                 $mb->profile_picture = 'images/profile/2.png';
+                $mb->profile_picture = 'images/profile/2.png';
             }
         }
         

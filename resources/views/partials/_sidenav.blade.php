@@ -3,6 +3,7 @@
 		  class="w3-closenav w3-large">Close &times;</a>
 		  <a href="{{ url('exist/membership') }}">Exisiting member</a>
 		  <a href="{{ url('membership') }}">New member</a>
+		  <a href="{{ url('/') }}">Home</a>
 </nav>
 <div id="mySidenav1" style="position: absolute; background-color: #fff; height: 100vh; width: 100vw; z-index: 9;  opacity: 0.5; display: none;"></div>
 	 	<div class="w3-top">
